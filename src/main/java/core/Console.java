@@ -1,9 +1,5 @@
 package core;
 
-import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.interactions.components.buttons.Button;
-
-import java.awt.*;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -24,36 +20,12 @@ public class Console {
     private static void registerTasks() {
         tasks.put("help", Console::onHelp);
 
-        tasks.put("send_info", Console::onSendInfo);
-
         tasks.put("quit", Console::onQuit);
         tasks.put("stats", Console::onStats);
         tasks.put("memory", Console::onMemory);
         tasks.put("threads", Console::onThreads);
         tasks.put("threads_interrupt", Console::onThreadsInterrupt);
         tasks.put("disconnect", Console::onDisconnect);
-    }
-
-    private static void onSendInfo(String[] args) {
-        Main.getJda().getTextChannelById(1071174848254070836L).sendMessageEmbeds(
-                new EmbedBuilder()
-                        .setColor(new Color(68, 68, 224))
-                        .setDescription("""
-                                **Willkommen auf dem Community Campus!**
-                                
-                                Wir sind ein Zusammenschluss von Community-Gründern und -Betreuern verschiedenster Größe.
-                                
-                                Unser Ziel ist es, Personen wie dir auf Discord helfen, eine eigene Community aufzubauen, aktiv zu halten und zu verbessern.
-                                
-                                Dazu bieten wir auf diesem Discord Server verschiedene Ressourcen, Workshops und natürlich direkte Hilfe in den öffentlichen Kanälen.
-                                
-                                Von der Ideenfindung für eine neue Gemeinschaft, über den Aufbau eines Discord Servers oder dem Finden neuer Mitglieder, bis hin zum Aktivhalten – wir sind für euch da!
-                                """)
-                        .build()
-        ).addActionRow(
-                Button.primary("info:rules", "Regeln"),
-                Button.primary("info:intern", "Interner Bereich / Freischaltung")
-        ).queue();
     }
 
     private static void onThreadsInterrupt(String[] args) {
