@@ -1,7 +1,7 @@
 package listeners.discord;
 
-import java.util.EventListener;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
-public class DiscordEventListener implements EventListener {
+public class DiscordEventListener extends ListenerAdapter {
 
 }
