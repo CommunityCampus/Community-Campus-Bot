@@ -1,4 +1,7 @@
 package listeners.discord;
 
-public class DiscordEventListener {
+import java.util.EventListener;
+
+public class DiscordEventListener implements EventListener {
+
 }
