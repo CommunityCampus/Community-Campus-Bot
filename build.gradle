@@ -1,0 +1,68 @@
+plugins {
+    id 'application'
+    id 'java'
+    id 'com.google.cloud.tools.jib' version '2.7.1'
+    id 'org.openjfx.javafxplugin' version '0.0.9'
+}
+
+ext {
+    javaMainClass = 'core.Main'
+}
+
+group = 'de.dc-community-campus'
+version = 'latest'
+sourceCompatibility = 15
+targetCompatibility = 15
+
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url 'https://jitpack.io' }
+    maven {
+        name 'm2-dv8tion'
+        url 'https://m2.dv8tion.net/releases'
+    }
+}
+
+dependencies {
+    implementation 'net.dv8tion:JDA:5.0.0-beta.2'
+    implementation 'mysql:mysql-connector-java:8.0.23'
+    implementation 'com.kcthota:emoji4j:6.0'
+    implementation 'org.json:json:20180813'
+    implementation 'org.jsoup:jsoup:1.12.1'
+    //implementation 'com.github.javafaker:javafaker:1.0.2'
+    implementation 'com.google.guava:guava:31.1-jre'
+    implementation 'com.github.ben-manes.caffeine:caffeine:3.0.5'
+    implementation 'net.java.openjfx.backport:openjfx-78-backport:1.8.0-ea-b96.1'
+    implementation 'org.reflections:reflections:0.9.11'
+    implementation 'org.apache.commons:commons-text:1.10.0'
+    implementation 'commons-io:commons-io:2.11.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+
+    /* logging */
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
+    implementation 'org.apache.logging.log4j:log4j-to-slf4j:2.13.1'
+}
+
+application {
+    mainClassName = javaMainClass
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+jib {
+    from {
+        image = 'adoptopenjdk:15.0.2_7-jdk-openj9-0.24.0'
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': javaMainClass
+    }
+}
