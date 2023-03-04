@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         jda = JDABuilder
-                .createDefault("MTA3NTA0NDY1NTczOTE4MzEwNQ.GBNNJD.u8bMYz46kGc5vQCUbP4JtaIzZfo1lVf-P2HuRg")
+                .createDefault("DISCORD_TOKEN")
                 .addEventListeners(new DiscordEventListener())
                 .build();
         Console.start();
